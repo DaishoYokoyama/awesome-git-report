@@ -27,6 +27,31 @@ AI-powered Git commit analyzer that generates intelligent summaries and reports 
 
 ## 📦 Installation
 
+### 🚀 NPX Usage (Recommended)
+
+No installation required! Run directly:
+
+```bash
+# Set your API key
+export GOOGLE_API_KEY=your_google_gemini_api_key
+
+# Run the tool
+npx awesome-git-report --from-date 2024-01-01 --to-date 2024-01-31
+```
+
+### 🌐 Global Installation
+
+```bash
+# Install globally
+npm install -g awesome-git-report
+
+# Set API key and run
+export GOOGLE_API_KEY=your_google_gemini_api_key
+awesome-git-report --from-date 2024-01-01 --to-date 2024-01-31
+```
+
+### 🛠️ Development Setup
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/your-username/awesome-git-report.git
@@ -57,22 +82,39 @@ GOOGLE_API_KEY=your_api_key_here
 
 ## 🚀 Usage
 
-### Basic Usage
+### NPX Usage (Recommended)
 
 ```bash
-npm start -- --from-date 2024-01-01 --to-date 2024-01-31
-```
+# Basic usage
+export GOOGLE_API_KEY=your_api_key_here
+npx awesome-git-report --from-date 2024-01-01 --to-date 2024-01-31
 
-### Advanced Usage
-
-```bash
-npm start -- \
+# Advanced usage with all options
+npx awesome-git-report \
   --from-date 2024-01-01 \
   --to-date 2024-01-31 \
   --language en \
   --timezone "America/New_York" \
   --repository "/path/to/your/repo" \
   --output "monthly-report.md"
+```
+
+### Global Installation Usage
+
+```bash
+# After global installation
+awesome-git-report --from-date 2024-01-01 --to-date 2024-01-31
+```
+
+### Development Usage
+
+```bash
+# For development/testing
+npm run dev -- --from-date 2024-01-01 --to-date 2024-01-31
+
+# Build and run
+npm run build
+npm start -- --from-date 2024-01-01 --to-date 2024-01-31
 ```
 
 ## 📖 CLI Options

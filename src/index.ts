@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from "commander";
 import { endOfDay, startOfDay } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
