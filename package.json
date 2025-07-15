@@ -1,9 +1,9 @@
 {
   "name": "awesome-git-report",
   "version": "0.0.1",
-  "description": "",
-  "license": "ISC",
-  "author": "",
+  "description": "AI-powered Git commit analyzer that generates intelligent summaries and reports from your repository history with multi-language support.",
+  "license": "MIT",
+  "author": "d.yokoyama",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
