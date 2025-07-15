@@ -1,0 +1,28 @@
+{
+  "name": "awesome-git-report",
+  "version": "0.0.1",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env -r ts-node/register src/index.ts"
+  },
+  "devDependencies": {
+    "@commander-js/extra-typings": "^14.0.0",
+    "@types/node": "^24.0.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^1.2.22",
+    "ai": "^4.3.18",
+    "commander": "^14.0.0",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "ora": "^8.2.0",
+    "simple-git": "^3.28.0",
+    "zod": "^3.23.8"
+  }
+}
