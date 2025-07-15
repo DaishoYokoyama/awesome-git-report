@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { LanguageModelUsage } from "ai";
 import { Command } from "commander";
 import { endOfDay, startOfDay } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
@@ -113,13 +114,19 @@ program.parse();
         "",
       ];
 
+      const usages: LanguageModelUsage[] = [];
+
       const spinner = ora("Generating report...").start();
       for (const [index, commit] of commits.all.entries()) {
         spinner.text = `Processing commit: ${index + 1}/${commits.all.length}`;
 
         const commitDetail = await getCommitWithDiffs(commit.hash, repository);
-        const summary = await summarizeCommit(commitDetail, language);
+        const { object: summary, usage } = await summarizeCommit(
+          commitDetail,
+          language
+        );
 
+        usages.push(usage);
         lines.push(
           `### ${commitDetail.commitHash} - ${summary.changeOverview}`,
           "",
@@ -141,8 +148,19 @@ program.parse();
         );
       }
 
+      const totalUsage = usages.reduce(
+        (acc, usage) => {
+          return {
+            promptTokens: acc.promptTokens + usage.promptTokens,
+            completionTokens: acc.completionTokens + usage.completionTokens,
+          };
+        },
+        { promptTokens: 0, completionTokens: 0 }
+      );
+
       writeFileSync(outputPath, lines.join("\n"), "utf8");
       spinner.succeed("Report generated successfully");
+      console.log("Total usage:", totalUsage);
     } catch (gitError) {
       console.error(
         "Git error:",

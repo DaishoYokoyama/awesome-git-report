@@ -1,5 +1,5 @@
 import { google } from "@ai-sdk/google";
-import { generateObject } from "ai";
+import { generateObject, GenerateObjectResult } from "ai";
 import { readFileSync } from "fs";
 import { join } from "path";
 import {
@@ -152,7 +152,7 @@ export const getCommitWithDiffs = async (
 export const summarizeCommit = async (
   commit: GitCommitWithDiffs,
   language: "ja" | "en" | "cn" = "ja"
-): Promise<CommitSummary> => {
+): Promise<GenerateObjectResult<CommitSummary>> => {
   const structuredData = {
     hash: commit.commitHash,
     message: commit.commitMessage,
@@ -182,5 +182,5 @@ export const summarizeCommit = async (
     ],
   });
 
-  return result.object;
+  return result;
 };
